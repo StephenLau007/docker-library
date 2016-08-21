@@ -1,5 +1,7 @@
 FROM stephenlu/centos-ssh-root
-ADD jdk-7u75-linux-x64.tar.gz /usr/local/
-RUN mv /usr/local/jdk1.7.0_75 /usr/local/jdk1.7
-ENV JAVA_HOME /usr/local/jdk1.7
+# java
+RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u75-b14/jdk-7u75-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
+RUN rpm -i jdk-7u75-linux-x64.rpm
+RUN rm jdk-7u75-linux-x64.rpm
+ENV JAVA_HOME /usr/local/default
 ENV PATH $JAVA_HOME/bin:$PATH
